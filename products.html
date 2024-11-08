@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3 - CSS</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- internal css -->
+    <style>
+        /* Universal styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 3rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Fade-in animation for title */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Main Layout */
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        /* Product Cards */
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 400px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: auto;
+            cursor: pointer;
+            opacity: 0;
+            animation: card-slide-in 1s forwards ease-out;
+            transform: translateX(100px);  /* Start off-screen */
+        }
+
+        /* Product card slide-in animation */
+        @keyframes card-slide-in {
+            0% { opacity: 0; transform: translateX(100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Hover effect for product cards */
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* .product-image {
+            width: 250px;
+            height: 200px;
+            transition: transform 0.3s ease-in-out;
+        } */
+
+        
+
+        /* Product title animation */
+        .product-title h3 {
+            animation: slide-in 1s ease-out;
+        }
+
+        /* Slide-in title animation */
+        @keyframes slide-in {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Price and button styling */
+        .price {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1s;  /* Delay fade-in */
+        }
+
+        /* Price fade-in animation */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Pulse animation for CTA buttons */
+        .product-card button {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: pulse 1s infinite ease-in-out;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .product-card button:hover {
+            background-color: #357c38;
+        }
+
+        /* Decorative skew transform */
+        .decorative-element {
+            width: 100px;
+            height: 100px;
+            background-color: #ff5722;
+            transform: skew(10deg);
+            margin-top: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Skew on hover */
+        .decorative-element:hover {
+            transform: skew(15deg);
+        }
+
+        /* Transform for rotation on icons */
+        .icon {
+            font-size: 3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: rotate(360deg);  /* Rotate on hover */
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            main {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header Section -->
+    <h1><u>K - Product Showcase</u></h1>
+
+    <!-- Nav -->
+    <nav class="navbar">
+        <div class="logo">Mr.K - Store</div>
+        
+        <!-- toggle button -->
+        <a href="#" class="toggle-button">
+          
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+          
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+              <!-- cart-icon -->
+            <li><a href='#'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+            </svg></a></li>
+          </ul>
+        </div>
+      </nav>
+
+   <!-- Hero Section -->
+<div class="hero">
+    <img src="img/background.jpg" alt="Background Image">
+    <div class="hero-text">
+        K-Ecommerce
+    </div>
+</div>
+    <main>
+        <!-- Product Cards -->
+        <div class="product-card">
+            <img class="product-image" src="img/watch.jpg" alt="Watch">
+            <div class="product-title"><h3>Watch</h3></div>
+            <p class="discount">-10%</p>
+            <div class="price">R10 000</div>
+            <button>Add to Cart   
+                <!-- cart icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="img/phone.jpg" alt="Phone">
+            <div class="product-title"><h3>Phone</h3></div>
+            <p class="discount">-19%</p>
+            <div class="price">R2 000</div>
+            <button>Add to Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="img/darts.jpg" alt="Darts">
+            <div class="product-title"><h3>Darts</h3></div>
+            <p class="discount">-3%</p>
+            <div class="price">R249.98</div>
+            <button>Add to Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="img/glasses.jpg" alt="Glasses">
+            <div class="product-title"><h3>Glasses</h3></div>
+            <p class="discount">-75%</p>
+            <div class="price">R2 500</div>
+            <button>Add to Cart  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="img/console.jpg" alt="Console">
+            <div class="product-title"><h3>Console</h3></div>
+            <p class="discount">-24%</p>
+            <div class="price">R1 000</div>
+            <button>Add to Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="img/juice.jpg" alt="Juice">
+            <div class="product-title"><h3>Juice</h3></div>
+            <p class="discount">-13%</p>
+            <div class="price">R50</div>
+            <button>Add to Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg></button>
+        </div>
+    </main>
+    <!-- footer -->
+    <footer>
+        <p class="copyright">@2024</p>
+    </footer>
+    <!-- internal js -->
+    <script>
+        // Hide loader after 5 seconds
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const loader = document.getElementById('loader');
+                loader.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+    <!-- external js -->
+    <script src="js/script.js"></script>
+</body>
+</html>
